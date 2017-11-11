@@ -233,6 +233,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114134343095792340, guid: c291b605d6ad97f408ef4041822bc845,
+        type: 2}
+      propertyPath: stairwellAbove
+      value: 
+      objectReference: {fileID: 1091802601}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c291b605d6ad97f408ef4041822bc845, type: 2}
   m_IsPrefabParent: 0
@@ -283,9 +288,24 @@ Prefab:
       propertyPath: m_Name
       value: Room (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114134343095792340, guid: c291b605d6ad97f408ef4041822bc845,
+        type: 2}
+      propertyPath: stairwellBelow
+      value: 
+      objectReference: {fileID: 1179340850}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c291b605d6ad97f408ef4041822bc845, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1091802601 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4134911497122628, guid: c291b605d6ad97f408ef4041822bc845,
+    type: 2}
+  m_PrefabInternal: {fileID: 744199089}
+--- !u!4 &1179340850 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4134911497122628, guid: c291b605d6ad97f408ef4041822bc845,
+    type: 2}
+  m_PrefabInternal: {fileID: 211711429}
 --- !u!1 &1420010759
 GameObject:
   m_ObjectHideFlags: 0

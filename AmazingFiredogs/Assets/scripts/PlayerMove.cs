@@ -6,10 +6,10 @@ public class PlayerMove : MonoBehaviour {
 	public int PlayerNum;
 	public int Facing = 1; // 1 for right, -1 for left.
 	public float JumpForce;
-
+	public float AirControl = 0.2f;
 	public float Speed = 3;
+
 	float moveForce = 100;
-	float airControl = 0.05f;
 	Rigidbody2D body;
 
 	float noGroundTime = 0.1f; // Allow some leeway on player being grounded.
@@ -21,6 +21,18 @@ public class PlayerMove : MonoBehaviour {
 
 	public Transform[] RaycastPoints;
 
+	Stairwell stairwell = null;
+
+	public void SetStairwell(Stairwell stairwell) {
+		this.stairwell = stairwell;
+	}
+
+	public void ExitStairwell(Stairwell stairwell) {
+		if (stairwell == this.stairwell) {
+			this.stairwell = null;
+		}
+	}
+
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
@@ -28,10 +40,12 @@ public class PlayerMove : MonoBehaviour {
 
 	void FixedUpdate() {
 		float horiz = Input.GetAxis(GlobalInput.Horizontal[PlayerNum]);
+		float vert = Input.GetAxis(GlobalInput.Vertical[PlayerNum]);
 
 		CheckGrounded(horiz);
 		CheckMovement(horiz);
 		CheckJump();
+		CheckVertical(vert);
 
 		if (Mathf.Abs(body.velocity.x) > Speed) {
 			body.velocity = new Vector2(Speed * Mathf.Sign(body.velocity.x), body.velocity.y);
@@ -69,7 +83,7 @@ public class PlayerMove : MonoBehaviour {
 		if (Grounded) {
 			body.AddForce(new Vector2(horiz * moveForce, 0));
 		} else {
-			body.AddForce(new Vector2(horiz * moveForce * airControl, 0));
+			body.AddForce(new Vector2(horiz * moveForce * AirControl, 0));
 		}
 	}
 
@@ -84,6 +98,17 @@ public class PlayerMove : MonoBehaviour {
 				body.velocity = vel;
 				jumpTimer = 0.2f;
 			}		
+		}
+	}
+
+	void CheckVertical(float vert) {
+		if (stairwell) {
+			if (vert > 0 && stairwell.stairwellAbove) {
+				body.position = stairwell.stairwellAbove.position;
+			}
+			if (vert < 0 && stairwell.stairwellBelow) {
+				body.position = stairwell.stairwellBelow.position;
+			}
 		}
 	}
 }
