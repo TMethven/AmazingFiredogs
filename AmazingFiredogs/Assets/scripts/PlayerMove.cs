@@ -28,19 +28,12 @@ public class PlayerMove : MonoBehaviour {
 
 	Stairwell stairwell = null;
 
-	public void SetStairwell(Stairwell stairwell) {
-		this.stairwell = stairwell;
-	}
-
-	public void ExitStairwell(Stairwell stairwell) {
-		if (stairwell == this.stairwell) {
-			this.stairwell = null;
-		}
-	}
+	GrabThrow grab;
 
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
+		grab = GetComponent<GrabThrow>();
 
 		if (PlayerNum == 1) {
 			controllerNum = GlobalInput.Player1Controller;
@@ -81,6 +74,7 @@ public class PlayerMove : MonoBehaviour {
 		CheckMovement(horiz);
 		CheckJump();
 		CheckVertical(vert);
+		CheckGrab();
 
 		if (Mathf.Abs(body.velocity.x) > Speed) {
 			body.velocity = new Vector2(Speed * Mathf.Sign(body.velocity.x), body.velocity.y);
@@ -109,9 +103,11 @@ public class PlayerMove : MonoBehaviour {
 
 	void CheckMovement(float horiz) {
 		if (horiz > 0) {
+			Facing = 1;
 			sprite.flipX = true;
 		}
 		if (horiz < 0) {
+			Facing = -1;
 			sprite.flipX = false;
 		}
 
@@ -136,6 +132,12 @@ public class PlayerMove : MonoBehaviour {
 		}
 	}
 
+	void CheckGrab() {
+		if (Input.GetButtonDown(GlobalInput.Shield[controllerNum])) {
+			grab.CheckGrab();
+		}
+	}
+
 	void CheckVertical(float vert) {
 		if (stairwell) {
 			if (vert > 0 && stairwell.stairwellAbove) {
@@ -144,6 +146,18 @@ public class PlayerMove : MonoBehaviour {
 			if (vert < 0 && stairwell.stairwellBelow) {
 				body.position = stairwell.stairwellBelow.position;
 			}
+		}
+	}
+
+
+	// Stairwell stuff.
+	public void SetStairwell(Stairwell stairwell) {
+		this.stairwell = stairwell;
+	}
+
+	public void ExitStairwell(Stairwell stairwell) {
+		if (stairwell == this.stairwell) {
+			this.stairwell = null;
 		}
 	}
 }
