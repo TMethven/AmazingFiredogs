@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour {
 	float airControl = 0.05f;
 	Rigidbody2D body;
 
-	float jumpTimer = 0;
+	float jumpTimer = 0; // Used to make sure the player can't jump then jump again immediately.
 
 	public bool Grounded = false;
 
@@ -38,7 +38,7 @@ public class PlayerMove : MonoBehaviour {
 			Grounded = false;
 			NoGroundTime -= Time.fixedDeltaTime;
 		} else {
-			Grounded = Physics2D.Raycast(body.position + (Vector2.down * 0.51f), Vector2.down, 0.02f);
+			Grounded = Physics2D.Raycast(body.position + (Vector2.down * 0.52f), Vector2.down, 0.02f);
 		}
 
 		// Stop the player quickly if they're not trying to move and are grounded.
@@ -64,9 +64,14 @@ public class PlayerMove : MonoBehaviour {
 	}
 
 	void CheckJump() {
-		if (Input.GetButtonDown(GlobalInput.Fire[PlayerNum])) {
-			if (Grounded) {
+		if (jumpTimer > 0) {
+			jumpTimer -= Time.fixedDeltaTime;
+		}
+		if (Input.GetButton(GlobalInput.Fire[PlayerNum])) {
+			if (Grounded && jumpTimer <= 0) {
 				body.AddForce(Vector2.up * JumpForce);
-			}		}
+				jumpTimer = 0.1f;
+			}		
+		}
 	}
 }
