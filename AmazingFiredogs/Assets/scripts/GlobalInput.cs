@@ -8,4 +8,7 @@
     public static string[] Shield = { "Keyboard0Shield", "Keyboard1Shield", "Joy0Shield", "Joy1Shield", "Joy2Shield", "Joy3Shield" };
     public static string[] Pause = { "Keyboard0Pause", "Keyboard1Pause", "Joy0Pause", "Joy1Pause", "Joy2Pause", "Joy3Pause" };
     public static string[] Back = { "Keyboard0Back", "Keyboard1Back", "Joy0Back", "Joy1Back", "Joy2Back", "Joy3Back" };
+
+    public static int Player1Controller = -1;
+    public static int Player2Controller = -1;
 }
