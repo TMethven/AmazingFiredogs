@@ -158,12 +158,12 @@ Prefab:
     - target: {fileID: 20997372207418664, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4,
         type: 2}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.505
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 20997372207418664, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4,
         type: 2}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.495
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114918697500220738, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4,
         type: 2}
@@ -190,6 +190,11 @@ Prefab:
         type: 2}
       propertyPath: m_BackGroundColor.b
       value: 0.41911763
+      objectReference: {fileID: 0}
+    - target: {fileID: 20997372207418664, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967039
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}

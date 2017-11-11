@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 33930503248631896}
   - component: {fileID: 23427771663230520}
   - component: {fileID: 61865090520740512}
+  - component: {fileID: 114134343095792340}
   m_Layer: 0
   m_Name: Stairwell
   m_TagString: Untagged
@@ -725,3 +726,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114134343095792340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1303182961800144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61be17ef1fc56bd4e9b3517a46bb770b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stairwellAbove: {fileID: 0}
+  stairwellBelow: {fileID: 0}
