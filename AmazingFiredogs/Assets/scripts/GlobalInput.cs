@@ -11,4 +11,9 @@
 
     public static int Player1Controller = -1;
     public static int Player2Controller = -1;
+
+    public static DogType Player1DogType = DogType.None;
+    public static DogType Player2DogType = DogType.None;
+
+    public enum DogType { None, Corgi, Husky, GermanShep, Lab };
 }
