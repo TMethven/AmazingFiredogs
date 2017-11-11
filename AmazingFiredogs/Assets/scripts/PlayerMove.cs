@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour {
 	public int PlayerNum;
 	public int Facing = 1; // 1 for right, -1 for left.
-	public float NoGroundTime = 0;
 	public float JumpForce;
 
 	public float Speed = 3;
@@ -13,18 +12,18 @@ public class PlayerMove : MonoBehaviour {
 	float airControl = 0.05f;
 	Rigidbody2D body;
 
+	float noGroundTime = 0.1f; // Allow some leeway on player being grounded.
 	float jumpTimer = 0; // Used to make sure the player can't jump then jump again immediately.
 
 	public bool Grounded = false;
 
 	SpriteRenderer sprite;
 
-	Transform raycastPoint;
+	public Transform[] RaycastPoints;
 
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
-		raycastPoint = transform.Find("RaycastPoint");
 	}
 
 	void FixedUpdate() {
@@ -40,11 +39,16 @@ public class PlayerMove : MonoBehaviour {
 	}
 
 	void CheckGrounded(float horiz) {
-		if (NoGroundTime > 0) {
+		if (noGroundTime > 0) {
 			Grounded = false;
-			NoGroundTime -= Time.fixedDeltaTime;
+			noGroundTime -= Time.fixedDeltaTime;
 		} else {
-			Grounded = Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f);
+			Grounded = false;
+			foreach(Transform raycastPoint in RaycastPoints) {
+				if (Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f)) {
+					Grounded = true;
+				}
+			}
 		}
 
 		// Stop the player quickly if they're not trying to move and are grounded.
@@ -75,8 +79,10 @@ public class PlayerMove : MonoBehaviour {
 		}
 		if (Input.GetButton(GlobalInput.Fire[PlayerNum])) {
 			if (Grounded && jumpTimer <= 0) {
-				body.AddForce(Vector2.up * JumpForce);
-				jumpTimer = 0.1f;
+				Vector2 vel = body.velocity;
+				vel.y = JumpForce;
+				body.velocity = vel;
+				jumpTimer = 0.2f;
 			}		
 		}
 	}
