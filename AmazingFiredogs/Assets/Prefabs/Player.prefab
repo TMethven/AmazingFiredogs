@@ -172,7 +172,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.41911763, g: 0.41911763, b: 0.41911763, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -272,15 +272,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173d29df88632a244b7af640071d68b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNum: 0
+  PlayerNum: 1
   Facing: 1
   JumpForce: 10
+  AirControl: 0.2
   Speed: 8
   Grounded: 0
   RaycastPoints:
   - {fileID: 4237060281848548}
   - {fileID: 4952221774668720}
   - {fileID: 4460994342843420}
+  corgiSprite: {fileID: 21300000, guid: 0c5b569dbfcb0df4d984d95ada74e01d, type: 3}
+  huskySprite: {fileID: 21300000, guid: ee7c1ddc29345d44aa2e05debee67984, type: 3}
 --- !u!124 &124919637016895886
 Behaviour:
   m_ObjectHideFlags: 1

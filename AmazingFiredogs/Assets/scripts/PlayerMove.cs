@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour {
 	public int PlayerNum;
+	int controllerNum = 0;
+
 	public int Facing = 1; // 1 for right, -1 for left.
 	public float JumpForce;
 	public float AirControl = 0.2f;
@@ -21,6 +23,9 @@ public class PlayerMove : MonoBehaviour {
 
 	public Transform[] RaycastPoints;
 
+	public Sprite corgiSprite;
+	public Sprite huskySprite;
+
 	Stairwell stairwell = null;
 
 	public void SetStairwell(Stairwell stairwell) {
@@ -36,11 +41,41 @@ public class PlayerMove : MonoBehaviour {
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
+
+		if (PlayerNum == 1) {
+			controllerNum = GlobalInput.Player1Controller;
+			if (controllerNum == -1) {
+				controllerNum = 0; // Default controller number for debugging.
+			}
+		} else {
+			controllerNum = GlobalInput.Player2Controller;
+			if (controllerNum == -1) {
+				controllerNum = 2; // Default controller number for debugging.
+			}
+		}
+
+		Sprite selectedSprite = sprite.sprite;
+
+		if (PlayerNum == 1) {
+			if (GlobalInput.Player1DogType == GlobalInput.DogType.Corgi) {
+				selectedSprite = corgiSprite;
+			} else if (GlobalInput.Player1DogType == GlobalInput.DogType.Husky) {
+				selectedSprite = huskySprite;
+			}
+		} else {
+			if (GlobalInput.Player2DogType == GlobalInput.DogType.Corgi) {
+				selectedSprite = corgiSprite;
+			} else if (GlobalInput.Player2DogType == GlobalInput.DogType.Husky) {
+				selectedSprite = huskySprite;
+			}
+		}
+
+		this.sprite.sprite = selectedSprite;
 	}
 
 	void FixedUpdate() {
-		float horiz = Input.GetAxis(GlobalInput.Horizontal[PlayerNum]);
-		float vert = Input.GetAxis(GlobalInput.Vertical[PlayerNum]);
+		float horiz = Input.GetAxis(GlobalInput.Horizontal[controllerNum]);
+		float vert = Input.GetAxis(GlobalInput.Vertical[controllerNum]);
 
 		CheckGrounded(horiz);
 		CheckMovement(horiz);
@@ -91,7 +126,7 @@ public class PlayerMove : MonoBehaviour {
 		if (jumpTimer > 0) {
 			jumpTimer -= Time.fixedDeltaTime;
 		}
-		if (Input.GetButton(GlobalInput.Fire[PlayerNum])) {
+		if (Input.GetButton(GlobalInput.Fire[controllerNum])) {
 			if (Grounded && jumpTimer <= 0) {
 				Vector2 vel = body.velocity;
 				vel.y = JumpForce;
