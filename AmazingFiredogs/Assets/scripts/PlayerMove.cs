@@ -17,8 +17,14 @@ public class PlayerMove : MonoBehaviour {
 
 	public bool Grounded = false;
 
+	SpriteRenderer sprite;
+
+	Transform raycastPoint;
+
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
+		sprite = GetComponent<SpriteRenderer>();
+		raycastPoint = transform.Find("RaycastPoint");
 	}
 
 	void FixedUpdate() {
@@ -38,7 +44,7 @@ public class PlayerMove : MonoBehaviour {
 			Grounded = false;
 			NoGroundTime -= Time.fixedDeltaTime;
 		} else {
-			Grounded = Physics2D.Raycast(body.position + (Vector2.down * 0.52f), Vector2.down, 0.02f);
+			Grounded = Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f);
 		}
 
 		// Stop the player quickly if they're not trying to move and are grounded.
@@ -50,10 +56,10 @@ public class PlayerMove : MonoBehaviour {
 
 	void CheckMovement(float horiz) {
 		if (horiz > 0) {
-			Facing = 1;
+			sprite.flipX = true;
 		}
 		if (horiz < 0) {
-			Facing = -1;
+			sprite.flipX = false;
 		}
 
 		if (Grounded) {
