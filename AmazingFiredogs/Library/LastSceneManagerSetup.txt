@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/DogSelect.unity
+- path: Assets/scenes/DogSelect.unity
   isLoaded: 1
   isActive: 1
