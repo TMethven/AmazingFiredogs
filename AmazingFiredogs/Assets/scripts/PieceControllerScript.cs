@@ -53,6 +53,11 @@ public class PieceControllerScript : MonoBehaviour
             return TPiece;
     }
 
+
+    /**
+     * Here I define the piece shapes in arrays. Please note, they are defined 'upside down' for
+     * simplicity when iterating through them in the BuildingOccupancyScript.
+     */
     private bool[,] LobbyPiece = new bool[,]
     {
         { true, true, true, true, true, true, true, true }
@@ -71,15 +76,15 @@ public class PieceControllerScript : MonoBehaviour
 
     private bool[,] SPiece = new bool[,]
     {
-        { true, false },
-        { true, true },
-        { false, true }
+        {true, false },
+        {true, true },
+        {false, true }
     };
 
     private bool[,] LPiece = new bool[,]
     {
-        { true, false },
-        { true, false },
-        { true, true }
+        { true, true, true },
+        { false, false, true }
+        
     };
 }

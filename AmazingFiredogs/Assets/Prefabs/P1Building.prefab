@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9534b5de842ea94aad9f040012df176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeToNextBlock: 2
+  maxTimeToNextBlock: 1
   piecePrefab:
   - {fileID: 1248970926708584, guid: f3e7b68ba3efee244b7decb4c4a66090, type: 2}
   - {fileID: 1787755547509642, guid: 2f302b811deefbf47990641520291ef2, type: 2}

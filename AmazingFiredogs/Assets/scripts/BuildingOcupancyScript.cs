@@ -16,7 +16,9 @@ public class BuildingOcupancyScript : MonoBehaviour
 
     private int currentHeight = 0;
 
-    private float timeSinceLastBlock = 0f; 
+    private float timeSinceLastBlock = 0f;
+
+    private int pieceCount = 0;
 
     // Use this for initialization
     void Start ()
@@ -135,39 +137,40 @@ public class BuildingOcupancyScript : MonoBehaviour
         }
         else if(piece == PieceControllerScript.PieceType.I)
         {
-            offsetFromLeft = Random.Range(0, GridWidth - 3);
             tempGO = Instantiate(piecePrefab[1]);
             tempPC = tempGO.GetComponent<PieceControllerScript>();
+
+            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 3);
             tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.I, offsetFromLeft);
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
         }
         else if (piece == PieceControllerScript.PieceType.S)
         {
-            offsetFromLeft = Random.Range(0, GridWidth - 1);
             tempGO = Instantiate(piecePrefab[2]);
-            height = 0;
             tempPC = tempGO.GetComponent<PieceControllerScript>();
+
+            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 1);
             tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.S, offsetFromLeft);
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
         }
         else if (piece == PieceControllerScript.PieceType.L)
         {
-            offsetFromLeft = Random.Range(0, GridWidth - 1);
             tempGO = Instantiate(piecePrefab[3]);
-            height = 0;
             tempPC = tempGO.GetComponent<PieceControllerScript>();
+
+            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 2);
             tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.L, offsetFromLeft);
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
         }
         else
         {
-            offsetFromLeft = Random.Range(0, GridWidth - 2);
             tempGO = Instantiate(piecePrefab[4]);
-            height = 0;
             tempPC = tempGO.GetComponent<PieceControllerScript>();
+
+            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 2);
             tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.T, offsetFromLeft);
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
@@ -176,6 +179,33 @@ public class BuildingOcupancyScript : MonoBehaviour
         addBlockAtHeight(height, offsetFromLeft, tempPC.getPieceOccupancy());
         tempPC.setHeightAndPosition(height);
 
-        Debug.Log("Piece Added!");
+        Debug.Log("Piece Added! Piece: " + pieceCount++);
+    }
+    
+    /**
+     * Gets -A- best offset to minimise the height. i.e. it looks for which column will allow
+     * the block to drop the furthest. If there is a draw, it picks a random one from the best
+     * possible.
+     */
+    private int getBestOffsetFromLeft(PieceControllerScript tempPC, int maxOffsetFromLeft)
+    {
+        int tempHeight, minHeight = int.MaxValue;
+        List<int> bestOffsets = new List<int>();
+
+        for(int i = 0; i < maxOffsetFromLeft; i++)
+        {
+            tempHeight = checkDropHeight(i, tempPC.getPieceOccupancy());
+
+            if (tempHeight < minHeight)
+            {
+                bestOffsets.Clear();
+                bestOffsets.Add(i);
+                minHeight = tempHeight;
+            }
+            else if (tempHeight == minHeight)
+                bestOffsets.Add(i);
+        }
+
+        return bestOffsets[Random.Range(0, bestOffsets.Count)];
     }
 }
