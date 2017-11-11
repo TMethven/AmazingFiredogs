@@ -9,18 +9,14 @@ public class GrabThrow : MonoBehaviour {
 	public GameObject Grabbed;
 	Rigidbody2D grabbedBody;
 
-	float carryOffsetX = 4f;
-	float carryOffsetY = 1f;
+	float carryOffsetX = 5f;
+	float carryOffsetY = 2f;
 
 	float grabRange = 3;
-
-	FixedJoint2D grabJoint;
 
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		move = GetComponent<PlayerMove>();
-		grabJoint = GetComponent<FixedJoint2D>();
-		grabJoint.enabled = false;
 	}
 	
 	public void CheckGrab() {
@@ -33,8 +29,7 @@ public class GrabThrow : MonoBehaviour {
 
 	void Update() {
 		if (Grabbed) {
-			Debug.Log("Facing: " + move.Facing);
-			grabJoint.anchor = new Vector2(carryOffsetX * move.Facing, carryOffsetY);
+			Grabbed.transform.localPosition = new Vector2(carryOffsetX * move.Facing, carryOffsetY);
 		}
 	}
 
@@ -49,14 +44,13 @@ public class GrabThrow : MonoBehaviour {
 				GrabThrow otherGrabThrow = near.GetComponent<GrabThrow>();
 				if (!otherGrabThrow || otherGrabThrow.Grabbed != gameObject) {
 					Grabbed = near.gameObject;
+					Grabbed.transform.parent = transform;
+					Grabbed.transform.localPosition = new Vector2(carryOffsetX * move.Facing, carryOffsetY);
+
 					grabbable.IsGrabbed = true;
 					grabbedBody = near.GetComponent<Rigidbody2D>();
 					grabbedBody.angularVelocity = 0;
-					grabJoint.enabled = true;
-					grabJoint.connectedBody = grabbedBody;
-					grabJoint.autoConfigureConnectedAnchor = false;
-					grabJoint.anchor = new Vector2(carryOffsetX, carryOffsetY);
-					grabJoint.connectedAnchor = Vector2.zero;
+					grabbedBody.simulated = false;
 					break;
 				}
 			}
@@ -64,11 +58,12 @@ public class GrabThrow : MonoBehaviour {
 	}
 
 	void Throw() {
-		grabJoint.enabled = false;
 		grabbedBody.velocity = body.velocity;
 
 		Grabbed.GetComponent<Grabbable>().IsGrabbed = false;
+		grabbedBody.simulated = true;
 		grabbedBody = null;
+		Grabbed.transform.parent = null;
 		Grabbed = null;
 	}
 }

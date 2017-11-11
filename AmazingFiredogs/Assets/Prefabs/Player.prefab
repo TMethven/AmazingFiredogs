@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 65602645875501434}
   - component: {fileID: 23976853103264968}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: Divider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 212992320385128770}
   - component: {fileID: 114341705647046862}
   - component: {fileID: 114819222482110104}
-  - component: {fileID: 255532843295755718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -434,20 +433,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!255 &255532843295755718
-FixedJoint2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1915973107170104}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 28.084822, y: -3.7250195}
-  m_DampingRatio: 0
-  m_Frequency: 0
