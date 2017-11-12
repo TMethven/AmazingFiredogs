@@ -30,7 +30,8 @@ public class GrabThrow : MonoBehaviour {
 	void Update() {
 		if (Grabbed) {
 			Grabbed.transform.localPosition = new Vector2(carryOffsetX * move.Facing, carryOffsetY);
-			//Grabbed.transform.rotation = Quaternion.Euler(0, -180 * move.Facing, 0);
+			float angle = 90 * (1 - move.Facing);
+			Grabbed.transform.rotation = Quaternion.Euler(0, angle, 0);
 		}
 	}
 
