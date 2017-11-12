@@ -11,7 +11,7 @@ public class PieceControllerScript : MonoBehaviour
 
     public int offsetFromLeft = 0, offsetFromBottom = 0;
 
-    private float unitSize = 1f;
+    private float unitSize = 5f;
 
 	// Use this for initialization
 	void Start ()
