@@ -4,50 +4,74 @@ using UnityEngine;
 
 public class FireControllerScript : MonoBehaviour
 {
-    public GameObject fireQuad;
     public float Speed = 0.1f;
+    public GameObject fireSprite;
 
-
-    private int arrayWidth = 4, arrayHeight = 100;
     private int[,] FireArray;
-    private Material[,] GOArray;
+    private BuildingOcupancyScript buildingScript;
+    private GameObject[,] fireSprites;
     private bool gameActive = true;
     private int fireLevels = 5;
+
+    private bool firstFireSet = false;
+
+    private int GridHeight, GridWidth;
 
 	// Use this for initialization
 	void Start ()
     {
-        FireArray = new int[arrayHeight, arrayWidth];
-        GOArray = new Material[arrayHeight, arrayWidth];
+        GridHeight = BuildingOcupancyScript.GridHeight;
+        GridWidth = BuildingOcupancyScript.GridWidth;
 
-        for (int y = 0; y < arrayHeight; y++)
-        {
-            for (int x = 0; x < arrayWidth; x++)
-            {
-                FireArray[y, x] = 0;
-                GameObject tempObj = Instantiate(fireQuad, new Vector3(y * 1 - arrayHeight / 2, x * 1 - arrayWidth / 2, 0f), Quaternion.identity);
-                GOArray[y, x] = tempObj.GetComponent<MeshRenderer>().material;
-            }
-        }
+        FireArray = new int[GridHeight, GridWidth];
 
-        FireArray[Random.Range(0, arrayHeight), Random.Range(0, arrayWidth)] = 1;
+        buildingScript = this.gameObject.GetComponent<BuildingOcupancyScript>();
+
+        createFireSprites();
 
         StartCoroutine(checkFireSpread());
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void createFireSprites()
     {
-		
+        fireSprites = new GameObject[GridHeight, GridWidth];
+
+        for (int y = 0; y < GridHeight; y++)
+        {
+            for (int x = 0; x < GridWidth; x++)
+            {
+                FireArray[y, x] = 0;
+                fireSprites[y, x] = Instantiate(fireSprite, this.transform);
+                fireSprites[y, x].transform.localPosition = new Vector3(x, y, -1f);
+                fireSprites[y, x].SetActive(false);
+            }
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update ()
+    {
+		if(!firstFireSet)
+        {
+            int x = Random.Range(0, GridWidth);
+            int y = Random.Range(0, GridHeight);
+            
+            if(buildingScript.OcupancyGrid[y, x])
+            {
+                FireArray[y, x] = 1;
+                firstFireSet = true;
+            }
+        }
 	}
 
     private IEnumerator checkFireSpread()
     {
         while(gameActive)
         {
-            for (int y = 0; y < arrayHeight; y++)
+            for (int y = 0; y < GridHeight; y++)
             {
-                for (int x = 0; x < arrayWidth; x++)
+                for (int x = 0; x < GridWidth; x++)
                 {
                     if (FireArray[y, x] > 0 && FireArray[y, x] < fireLevels)
                     {
@@ -60,7 +84,13 @@ public class FireControllerScript : MonoBehaviour
                         checkSpreadToNeighbours(y, x);
                     }
 
-                    GOArray[y, x].color = new Color(0.2f * FireArray[y, x], 0, 0);
+                    if (FireArray[y, x] == 0)
+                        fireSprites[y, x].SetActive(false);
+                    else
+                    {
+                        fireSprites[y, x].SetActive(true);
+                        fireSprites[y, x].transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f * FireArray[y, x]);
+                    }
                 }
             }
             yield return new WaitForSeconds(Speed);
@@ -70,23 +100,24 @@ public class FireControllerScript : MonoBehaviour
     private void checkSpreadToNeighbours(int y, int x)
     {
         //Check up!
-        if(y > 0 && FireArray[y - 1, x] == 0 && Random.Range(0f, 1f) > 0.25f)
+        if(y > 0 && FireArray[y - 1, x] == 0 && buildingScript.OcupancyGrid[y - 1, x] && Random.Range(0f, 1f) > 0.25f)
         {
+            
             FireArray[y - 1, x] = 1;
         }
         //Check down!
-        if (y < arrayHeight - 1 && FireArray[y + 1, x] == 0 && Random.Range(0f, 1f) > 0.25f)
+        if (y < GridHeight - 1 && FireArray[y + 1, x] == 0 && buildingScript.OcupancyGrid[y + 1, x] && Random.Range(0f, 1f) > 0.25f)
         {
             FireArray[y + 1, x] = 1;
         }
 
         //Check up!
-        if (x > 0 && FireArray[y, x - 1] == 0 && Random.Range(0f, 1f) > 0.8f)
+        if (x > 0 && FireArray[y, x - 1] == 0 && buildingScript.OcupancyGrid[y, x - 1] && Random.Range(0f, 1f) > 0.8f)
         {
             FireArray[y, x - 1] = 1;
         }
         //Check down!
-        if (x < arrayWidth - 1 && FireArray[y, x + 1] == 0 && Random.Range(0f, 1f) > 0.8f)
+        if (x < GridWidth - 1 && FireArray[y, x + 1] == 0 && buildingScript.OcupancyGrid[y, x + 1] && Random.Range(0f, 1f) > 0.8f)
         {
             FireArray[y, x + 1] = 1;
         }

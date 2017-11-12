@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4950039186145730}
   - component: {fileID: 114623122928897528}
+  - component: {fileID: 114962036022444262}
   m_Layer: 0
   m_Name: P1Building
   m_TagString: Untagged
@@ -58,5 +59,16 @@ MonoBehaviour:
   - {fileID: 1946561057868598, guid: 50376d31041e4944f8d6b2f8f38ce02b, type: 2}
   - {fileID: 1293780746217894, guid: b75bd8b9f4bc5264eb88d75b2b0fb09b, type: 2}
   - {fileID: 1548231614406166, guid: 355c1d16022ca28429ded4168b163ecd, type: 2}
-  HighestStairCase: []
-  HighestStairCaseHeight: 
+--- !u!114 &114962036022444262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349387395709706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46859ab0e1bbc264290a684ebaa8ec28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.1
+  fireSprite: {fileID: 1862826915004976, guid: 7ef34bf400c527e429bc1bc7b1e9e983, type: 2}

@@ -7,12 +7,11 @@ public class BuildingOcupancyScript : MonoBehaviour
     public float maxTimeToNextBlock = 1f;
     public GameObject[] piecePrefab;
 
-    public const int GridWidth = 8;
-    public const int GridHeight = 100;
+    public static int GridWidth = 8;
+    public static int GridHeight = 100;
 
     public bool[,] OcupancyGrid;
-    public GameObject[] HighestStairCase;
-    public int[] HighestStairCaseHeight;
+    public GameObject[,] fireSprites;
 
     private int currentHeight = 0;
 
@@ -24,8 +23,6 @@ public class BuildingOcupancyScript : MonoBehaviour
     void Start ()
     {
         OcupancyGrid = new bool[GridHeight, GridWidth];
-        HighestStairCase = new GameObject[GridWidth];
-        HighestStairCaseHeight = new int[GridWidth];
 
         //Always start with a lobby piece!
         addPiece(PieceControllerScript.PieceType.LOBBY);
@@ -77,7 +74,6 @@ public class BuildingOcupancyScript : MonoBehaviour
         }
     }
 
-	
 	// Update is called once per frame
 	void Update ()
     {
@@ -179,7 +175,7 @@ public class BuildingOcupancyScript : MonoBehaviour
         addBlockAtHeight(height, offsetFromLeft, tempPC.getPieceOccupancy());
         tempPC.setHeightAndPosition(height);
 
-        Debug.Log("Piece Added! Piece: " + pieceCount++);
+    
     }
     
     /**
