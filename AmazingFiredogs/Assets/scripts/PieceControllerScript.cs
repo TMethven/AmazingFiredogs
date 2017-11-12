@@ -6,6 +6,7 @@ public class PieceControllerScript : MonoBehaviour
 {
     public enum PieceType { LOBBY, I, T, S, L};
     public static int NumberOfPieceTypes = 4;
+    public LayerMask layerMask;
 
     public PieceType pType; 
 
@@ -37,6 +38,32 @@ public class PieceControllerScript : MonoBehaviour
         offsetFromBottom = height;
 
         this.transform.localPosition = new Vector3(offsetFromLeft * unitSize, offsetFromBottom * unitSize);
+
+        findLowerStairWell();
+    }
+
+    private void findLowerStairWell()
+    {
+        if (pType == PieceType.LOBBY)
+            return;
+
+        Transform sprite = this.gameObject.transform.Find("Sprite");
+        GameObject thisStairWell = sprite.Find("Stairwell").gameObject;
+        Stairwell sourceSW = thisStairWell.GetComponent<Stairwell>();
+
+        RaycastHit2D hit = Physics2D.Raycast(thisStairWell.transform.position - new Vector3(0, 2.5f, 0), Vector2.down, 50f, layerMask);
+        Debug.DrawRay(thisStairWell.transform.position - new Vector3(0, 2.5f, 0), Vector2.down, Color.magenta, 10f);
+
+        if(hit.collider != null)
+        {
+            GameObject target = hit.collider.gameObject;
+            Stairwell targetSW = target.GetComponent<Stairwell>();
+
+            targetSW.stairwellAbove = sourceSW.transform;
+            sourceSW.stairwellBelow = targetSW.transform;
+        }
+
+        Debug.Log("Test!");
     }
 
     public bool[,] getPieceOccupancy()
