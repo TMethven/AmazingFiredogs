@@ -173,9 +173,7 @@ public class BuildingOcupancyScript : MonoBehaviour
         }
 
         addBlockAtHeight(height, offsetFromLeft, tempPC.getPieceOccupancy());
-        tempPC.setHeightAndPosition(height);
-
-    
+        tempPC.setHeightAndPosition(height);    
     }
     
     /**

@@ -346,6 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a77dffe3d2b8244979dfbfef9d3b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
   pType: 1
   offsetFromLeft: 0
   offsetFromBottom: 0
@@ -360,6 +363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a77dffe3d2b8244979dfbfef9d3b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   pType: 0
   offsetFromLeft: 0
   offsetFromBottom: 0
