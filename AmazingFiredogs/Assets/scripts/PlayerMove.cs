@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour {
 	public Sprite huskySprite;
 
 	Stairwell stairwell = null;
+	bool movedStairwell = false;
 
 	GrabThrow grab;
 
@@ -142,12 +143,18 @@ public class PlayerMove : MonoBehaviour {
 	}
 
 	void CheckVertical(float vert) {
-		if (stairwell) {
+		if (Mathf.Abs(vert) < 0.01) {
+			movedStairwell = false;
+		}
+		
+		if (stairwell && !movedStairwell) {
 			if (vert > 0 && stairwell.stairwellAbove) {
 				body.position = stairwell.stairwellAbove.position;
+				movedStairwell = true;
 			}
-			if (vert < 0 && stairwell.stairwellBelow) {
+			if (vert < 0 && stairwell.stairwellBelow && !movedStairwell) {
 				body.position = stairwell.stairwellBelow.position;
+				movedStairwell = true;
 			}
 		}
 	}
