@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireControllerScript : MonoBehaviour
 {
-    public float Speed = 0.1f;
+    public float Speed = 0.1f, fireDelay = 10f;
     public GameObject fireSprite;
 
     private int[,] FireArray;
