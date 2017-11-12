@@ -89,7 +89,8 @@ public class FireControllerScript : MonoBehaviour
                     else
                     {
                         fireSprites[y, x].SetActive(true);
-                        fireSprites[y, x].transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f * FireArray[y, x]);
+                        fireSprites[y, x].GetComponent<FireSpriteController>().setTransparency(0.2f * FireArray[y, x]);
+                        //fireSprites[y, x].transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f * FireArray[y, x]);
                     }
                 }
             }
