@@ -137,4 +137,14 @@ public class FireControllerScript : MonoBehaviour
             --FireArray[buildingPosition.Value.y, buildingPosition.Value.x];
         }
     }
+
+    public int checkFireLevel(Vector3 in_worldPosition)
+    {
+        Vector2Int? buildingPosition = buildingScript.worldToBuildingCoord(in_worldPosition);
+        if(buildingPosition == null)
+        {
+            return 0;
+        }
+        return FireArray[buildingPosition.Value.y, buildingPosition.Value.x];
+    }
 }
