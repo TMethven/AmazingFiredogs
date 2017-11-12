@@ -6,7 +6,11 @@ public class Rescuable : MonoBehaviour {
 	public int BuildingNum;
 
 	void Start() {
-		
+		if (transform.position.x > 0) {
+			BuildingNum = 2;
+		} else {
+			BuildingNum = 1;
+		}
 	}
 	
 	void OnTriggerEnter2D(Collider2D other) {
