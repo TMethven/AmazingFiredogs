@@ -33,11 +33,15 @@ public class PlayerMove : MonoBehaviour {
 
 	LayerMask groundedMask;
 
+	public AudioClip[] borks;
+	AudioSource audioSource;
+
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
 		grab = GetComponent<GrabThrow>();
 		groundedMask = LayerMask.GetMask(new string[] {"Default"});
+		audioSource = GetComponent<AudioSource>();
 
 		if (PlayerNum == 1) {
 			controllerNum = GlobalInput.Player1Controller;
@@ -138,7 +142,10 @@ public class PlayerMove : MonoBehaviour {
 
 	void CheckGrab() {
 		if (Input.GetButtonDown(GlobalInput.Shield[controllerNum])) {
-			grab.CheckGrab();
+			Debug.Log("Grabby???");
+			if (grab.CheckGrab()) {
+				audioSource.PlayOneShot(borks[(int) (Random.value * borks.Length)]);
+			}
 		}
 	}
 

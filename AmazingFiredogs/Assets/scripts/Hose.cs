@@ -12,6 +12,8 @@ public class Hose : MonoBehaviour {
     private FireControllerScript  fireControllerScript1;
     private FireControllerScript fireControllerScript2;
 
+	AudioSource waterSound;
+
     void Start() {
 		grabbed = GetComponent<Grabbable>();
 		particles = GetComponentInChildren<ParticleSystem>();
@@ -19,6 +21,7 @@ public class Hose : MonoBehaviour {
         buildingOcupancyScript2 = building2.GetComponent<BuildingOcupancyScript>();
         fireControllerScript1 = building1.GetComponent<FireControllerScript>();
         fireControllerScript2 = building2.GetComponent<FireControllerScript>();
+		waterSound = GetComponent<AudioSource>();
     }
 	
 	void Update() {
@@ -33,9 +36,11 @@ public class Hose : MonoBehaviour {
 		if (grabbed.IsGrabbed && !particles.isEmitting) {
 			particles.Clear();
 			particles.Play();
+			waterSound.Play();
 		}
 		if (!grabbed.IsGrabbed && particles.isPlaying) {
 			particles.Stop();
+			waterSound.Stop();
 		}
 	}
 }

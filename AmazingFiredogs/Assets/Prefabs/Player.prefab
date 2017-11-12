@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 212992320385128770}
   - component: {fileID: 114341705647046862}
   - component: {fileID: 114819222482110104}
+  - component: {fileID: 82216150321315852}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -177,6 +178,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.012011, y: 7.050865}
   m_EdgeRadius: 0
+--- !u!82 &82216150321315852
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915973107170104}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114341705647046862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,16 +294,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerNum: 1
   Facing: 1
-  JumpForce: 15
+  JumpForce: 15.5
   AirControl: 0.2
   Speed: 8
-  Grounded: 0
+  Grounded: 1
   RaycastPoints:
   - {fileID: 4237060281848548}
   - {fileID: 4952221774668720}
   - {fileID: 4460994342843420}
   corgiSprite: {fileID: 21300000, guid: 0c5b569dbfcb0df4d984d95ada74e01d, type: 3}
   huskySprite: {fileID: 21300000, guid: ee7c1ddc29345d44aa2e05debee67984, type: 3}
+  borks:
+  - {fileID: 8300000, guid: 0e159fc96a7ca8243a176942d59349bc, type: 3}
+  - {fileID: 8300000, guid: 94a14b254b4e7aa46989437156c2b2e2, type: 3}
 --- !u!212 &212992320385128770
 SpriteRenderer:
   m_ObjectHideFlags: 1

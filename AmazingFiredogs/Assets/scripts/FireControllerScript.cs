@@ -17,6 +17,8 @@ public class FireControllerScript : MonoBehaviour
 
     private int GridHeight, GridWidth;
 
+	AudioSource fireSound;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -28,6 +30,8 @@ public class FireControllerScript : MonoBehaviour
         buildingScript = this.gameObject.GetComponent<BuildingOcupancyScript>();
 
         createFireSprites();
+
+		fireSound = GetComponent<AudioSource>();
 
         StartCoroutine(checkFireSpread());
 	}
@@ -70,6 +74,7 @@ public class FireControllerScript : MonoBehaviour
     {
         while(gameActive)
         {
+			int totalFire = 0;
             for (int y = 0; y < GridHeight; y++)
             {
                 for (int x = 0; x < GridWidth; x++)
@@ -93,8 +98,13 @@ public class FireControllerScript : MonoBehaviour
                         fireSprites[y, x].GetComponent<FireSpriteController>().setTransparency(0.2f * FireArray[y, x]);
                         //fireSprites[y, x].transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f * FireArray[y, x]);
                     }
+					totalFire += FireArray[y, x];
                 }
             }
+
+			// Set the fire sound volume to get louder as the fire spreads.
+			fireSound.volume = Mathf.Min(totalFire / 50.0f, 1.0f);
+
             yield return new WaitForSeconds(Speed);
         }
     }

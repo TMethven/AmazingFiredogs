@@ -19,11 +19,12 @@ public class GrabThrow : MonoBehaviour {
 		move = GetComponent<PlayerMove>();
 	}
 	
-	public void CheckGrab() {
+	public bool CheckGrab() {
 		if (Grabbed) {
 			Throw();
+			return false;
 		} else {
-			Grab();
+			return Grab();
 		}
 	}
 
@@ -35,7 +36,7 @@ public class GrabThrow : MonoBehaviour {
 		}
 	}
 
-	void Grab() {
+	bool Grab() {
 		foreach (Collider2D near in Physics2D.OverlapCircleAll(body.position, grabRange)) {
 			if (near.gameObject == gameObject) {
 				continue;
@@ -53,10 +54,11 @@ public class GrabThrow : MonoBehaviour {
 					grabbedBody = near.GetComponent<Rigidbody2D>();
 					grabbedBody.angularVelocity = 0;
 					grabbedBody.simulated = false;
-					break;
+					return true;
 				}
 			}
 		}
+		return false;
 	}
 
 	void Throw() {
