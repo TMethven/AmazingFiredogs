@@ -11,7 +11,7 @@ public class RescueZone : MonoBehaviour {
 	TextMeshPro p1ScoreText;
 	TextMeshPro p2ScoreText;
 
-    private int winScore = 5    
+    private int winScore = 5;    
     private GameObject winText;
     private GameObject P1GO, P2GO;
 
