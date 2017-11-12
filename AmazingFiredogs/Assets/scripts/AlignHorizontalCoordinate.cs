@@ -11,7 +11,6 @@ public class AlignHorizontalCoordinate : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        bool bla = false;
 	}
 	
 	// Update is called once per frame
