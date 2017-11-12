@@ -220,7 +220,7 @@ public class BuildingOcupancyScript : MonoBehaviour
 
     public Vector2Int? worldToBuildingCoord(Vector3 in_worldPosition)
     {
-        float unitSize = 5f;
+        float unitSize = PieceControllerScript.unitSize;
         Vector2Int? pos = null;
         Vector3 buildingWorldPosition = transform.position;
         Vector3 buildingWorldScale = transform.lossyScale;

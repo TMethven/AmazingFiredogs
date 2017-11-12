@@ -203,6 +203,11 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4294967039
       objectReference: {fileID: 0}
+    - target: {fileID: 114918697500220738, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4,
+        type: 2}
+      propertyPath: JumpForce
+      value: 15.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}
   m_IsPrefabParent: 0
@@ -248,6 +253,11 @@ Prefab:
     - target: {fileID: 1915973107170104, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114918697500220738, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4,
+        type: 2}
+      propertyPath: JumpForce
+      value: 15.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}

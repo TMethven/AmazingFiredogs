@@ -42,7 +42,7 @@ public class FireControllerScript : MonoBehaviour
             {
                 FireArray[y, x] = 0;
                 fireSprites[y, x] = Instantiate(fireSprite, this.transform);
-                fireSprites[y, x].transform.localPosition = new Vector3(x * 5, y * 5, -1f);
+                fireSprites[y, x].transform.localPosition = new Vector3(x * PieceControllerScript.unitSize, y * PieceControllerScript.unitSize, -1f);
                 fireSprites[y, x].SetActive(false);
             }
         }

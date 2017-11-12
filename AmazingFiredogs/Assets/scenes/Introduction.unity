@@ -166,9 +166,29 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "You are brave firedogs dogs whose life task is to rescue humans from fire!\n\nMove
-    around the building, while next rooms are added on top of the old ones and save
-    humans from burning alive. \n\nDon't be worry if you will lose. \n\n"
+  m_text: 'You are brave firedogs whose have been tasked to rescue humans from fire!
+
+
+    Move around the building, jumping over obstacles, and search for humans. But be
+    careful, as you play more and more rooms will be added to the top of the building
+    and fires will start to rage!
+
+
+    You can put out fires by holding the hose and standing in the room on fire.
+
+
+    If you reach any door, you can press UP or DOWN and you will move to the nearest
+    door above or below you in that column. You might have to wait for some more building
+    to appear before they work, however!
+
+
+    First dog to rescue 5 humans will be a good boy, and win the game!
+
+
+    P.S. Humans who are already cooked, don''t count!
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf8508ecf17ca0e4e975c112ec2e316c, type: 2}
   m_sharedMaterial: {fileID: 21802636190312390, guid: cf8508ecf17ca0e4e975c112ec2e316c,
@@ -214,7 +234,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 534
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -236,12 +256,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5099074}
-    characterCount: 225
+    characterCount: 668
     spriteCount: 0
-    spaceCount: 47
-    wordCount: 42
+    spaceCount: 135
+    wordCount: 130
     linkCount: 0
-    lineCount: 8
+    lineCount: 19
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -798,7 +818,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1935198856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 512, y: 384, z: 0}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 151120493}
