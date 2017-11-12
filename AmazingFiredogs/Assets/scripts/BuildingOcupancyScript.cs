@@ -93,11 +93,16 @@ public class BuildingOcupancyScript : MonoBehaviour
     {
         if (pieceList == null || pieceIndex == pieceList.Length)
         {
-            pieceList = new PieceControllerScript.PieceType[PieceControllerScript.NumberOfPieceTypes * 2];
+            pieceList = new PieceControllerScript.PieceType[PieceControllerScript.NumberOfPieceTypes * 2 + 4];
 
             //Populate list...
             for (int i = 0; i < pieceList.Length; i++)
                 pieceList[i] = (PieceControllerScript.PieceType)((i % PieceControllerScript.NumberOfPieceTypes) + 1);
+
+            pieceList[PieceControllerScript.NumberOfPieceTypes * 2] = PieceControllerScript.PieceType.WALL;
+            pieceList[PieceControllerScript.NumberOfPieceTypes * 2 + 1] = PieceControllerScript.PieceType.WALL;
+            pieceList[PieceControllerScript.NumberOfPieceTypes * 2 + 2] = PieceControllerScript.PieceType.WALL;
+            pieceList[PieceControllerScript.NumberOfPieceTypes * 2 + 3] = PieceControllerScript.PieceType.WALL;
 
             //Shuffle list...
             for (int i = 0; i < pieceList.Length; i++)
@@ -161,13 +166,23 @@ public class BuildingOcupancyScript : MonoBehaviour
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
         }
-        else
+        else if(piece == PieceControllerScript.PieceType.T)
         {
             tempGO = Instantiate(piecePrefab[4]);
             tempPC = tempGO.GetComponent<PieceControllerScript>();
 
             offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 2);
             tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.T, offsetFromLeft);
+
+            height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
+        }
+        else
+        {
+            tempGO = Instantiate(piecePrefab[5]);
+            tempPC = tempGO.GetComponent<PieceControllerScript>();
+
+            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 1);
+            tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.WALL, offsetFromLeft);
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());
         }

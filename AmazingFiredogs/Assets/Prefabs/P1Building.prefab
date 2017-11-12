@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 1946561057868598, guid: 50376d31041e4944f8d6b2f8f38ce02b, type: 2}
   - {fileID: 1293780746217894, guid: b75bd8b9f4bc5264eb88d75b2b0fb09b, type: 2}
   - {fileID: 1548231614406166, guid: 355c1d16022ca28429ded4168b163ecd, type: 2}
+  - {fileID: 1449686175722842, guid: 2b2fed8255bfec94e9ff58e1b6719711, type: 2}
 --- !u!114 &114962036022444262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,4 +72,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
+  fireDelay: 10
   fireSprite: {fileID: 1862826915004976, guid: 7ef34bf400c527e429bc1bc7b1e9e983, type: 2}

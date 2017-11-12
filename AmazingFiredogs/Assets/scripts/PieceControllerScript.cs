@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PieceControllerScript : MonoBehaviour
 {
-    public enum PieceType { LOBBY, I, T, S, L};
-    public static int NumberOfPieceTypes = 4;
+    public enum PieceType { LOBBY, I, T, S, L, WALL};
+    public static int NumberOfPieceTypes = 5;
     public LayerMask layerMask;
 
     public PieceType pType; 
@@ -44,7 +44,7 @@ public class PieceControllerScript : MonoBehaviour
 
     private void findLowerStairWell()
     {
-        if (pType == PieceType.LOBBY)
+        if (pType == PieceType.LOBBY || pType == PieceType.WALL)
             return;
 
         Transform sprite = this.gameObject.transform.Find("Sprite");
@@ -76,8 +76,10 @@ public class PieceControllerScript : MonoBehaviour
             return LPiece;
         else if (pType == PieceType.S)
             return SPiece;
-        else
+        else if (pType == PieceType.T)
             return TPiece;
+        else
+            return Wall;
     }
 
 
@@ -113,5 +115,10 @@ public class PieceControllerScript : MonoBehaviour
         { true, true, true, true },
         { false, false, false, true }
         
+    };
+
+    private bool[,] Wall = new bool[,]
+    {
+        { true }
     };
 }
