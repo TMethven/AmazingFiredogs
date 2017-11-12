@@ -174,8 +174,6 @@ public class BuildingOcupancyScript : MonoBehaviour
 
         addBlockAtHeight(height, offsetFromLeft, tempPC.getPieceOccupancy());
         tempPC.setHeightAndPosition(height);
-
-    
     }
     
     /**
@@ -203,5 +201,25 @@ public class BuildingOcupancyScript : MonoBehaviour
         }
 
         return bestOffsets[Random.Range(0, bestOffsets.Count)];
+    }
+
+    public Vector2Int? worldToBuildingCoord(Vector3 in_worldPosition)
+    {
+        float unitSize = 5f;
+        Vector2Int? pos = null;
+        Vector3 buildingWorldPosition = transform.position;
+        Vector3 buildingWorldScale = transform.lossyScale;
+
+        Vector3 localScaleDistances = (in_worldPosition - buildingWorldPosition);
+        localScaleDistances.x /= buildingWorldScale.x;
+        localScaleDistances.y /= buildingWorldScale.y;
+
+        Vector3 buildingCoord = localScaleDistances / unitSize;
+        if( (buildingCoord.x >= 0 && buildingCoord.x < GridWidth) && (buildingCoord.y >= 0 && buildingCoord.y < GridHeight) )
+        {
+            pos = new Vector2Int((int)buildingCoord.x, (int)buildingCoord.y);
+        }
+
+        return pos;
     }
 }
