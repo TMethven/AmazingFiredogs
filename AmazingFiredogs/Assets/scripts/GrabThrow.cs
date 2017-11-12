@@ -12,7 +12,7 @@ public class GrabThrow : MonoBehaviour {
 	float carryOffsetX = 5f;
 	float carryOffsetY = 2f;
 
-	float grabRange = 3;
+	float grabRange = 4;
 
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
