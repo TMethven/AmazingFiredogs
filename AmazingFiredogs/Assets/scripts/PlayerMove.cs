@@ -30,15 +30,18 @@ public class PlayerMove : MonoBehaviour {
 
 	GrabThrow grab;
 
+	LayerMask groundedMask;
+
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
 		grab = GetComponent<GrabThrow>();
+		groundedMask = LayerMask.GetMask(new string[] {"Default"});
 
 		if (PlayerNum == 1) {
 			controllerNum = GlobalInput.Player1Controller;
 			if (controllerNum == -1) {
-				controllerNum = 0; // Default controller number for debugging.
+				controllerNum = 1; // Default controller number for debugging.
 			}
 		} else {
 			controllerNum = GlobalInput.Player2Controller;
@@ -88,7 +91,7 @@ public class PlayerMove : MonoBehaviour {
 		} else {
 			Grounded = false;
 			foreach(Transform raycastPoint in RaycastPoints) {
-				if (Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f)) {
+				if (Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f, groundedMask)) {
 					Grounded = true;
 				}
 			}
