@@ -112,6 +112,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87419105 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1349387395709706, guid: eb39f53756107ff4a97b807be02cddf7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1270459864}
 --- !u!1001 &105064473
 Prefab:
   m_ObjectHideFlags: 0
@@ -121,11 +126,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4351097315662836, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.86
+      value: 14.02
       objectReference: {fileID: 0}
     - target: {fileID: 4351097315662836, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.84
+      value: -1.99
       objectReference: {fileID: 0}
     - target: {fileID: 4351097315662836, guid: 0bc25b8dd112ab54497bbf93e4bf5ed4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -277,6 +282,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &550134203 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1349387395709706, guid: eb39f53756107ff4a97b807be02cddf7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1906493011}
 --- !u!1001 &667948854
 Prefab:
   m_ObjectHideFlags: 0
@@ -321,6 +331,16 @@ Prefab:
       propertyPath: randomSeed
       value: -1452702791
       objectReference: {fileID: 0}
+    - target: {fileID: 114258327466698232, guid: 2151a3be8b46a5347b0dac9b3ed5abe1,
+        type: 2}
+      propertyPath: building1
+      value: 
+      objectReference: {fileID: 550134203}
+    - target: {fileID: 114258327466698232, guid: 2151a3be8b46a5347b0dac9b3ed5abe1,
+        type: 2}
+      propertyPath: building2
+      value: 
+      objectReference: {fileID: 87419105}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2151a3be8b46a5347b0dac9b3ed5abe1, type: 2}
   m_IsPrefabParent: 0
@@ -363,6 +383,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114258327466698232, guid: 2151a3be8b46a5347b0dac9b3ed5abe1,
+        type: 2}
+      propertyPath: building1
+      value: 
+      objectReference: {fileID: 550134203}
+    - target: {fileID: 114258327466698232, guid: 2151a3be8b46a5347b0dac9b3ed5abe1,
+        type: 2}
+      propertyPath: building2
+      value: 
+      objectReference: {fileID: 87419105}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2151a3be8b46a5347b0dac9b3ed5abe1, type: 2}
   m_IsPrefabParent: 0

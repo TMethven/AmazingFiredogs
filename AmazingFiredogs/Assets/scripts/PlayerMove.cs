@@ -148,11 +148,11 @@ public class PlayerMove : MonoBehaviour {
 		}
 		
 		if (stairwell && !movedStairwell) {
-			if (vert > 0 && stairwell.stairwellAbove) {
+			if (vert > 0.1 && stairwell.stairwellAbove) {
 				body.position = stairwell.stairwellAbove.position;
 				movedStairwell = true;
 			}
-			if (vert < 0 && stairwell.stairwellBelow && !movedStairwell) {
+			if (vert < -0.1 && stairwell.stairwellBelow && !movedStairwell) {
 				body.position = stairwell.stairwellBelow.position;
 				movedStairwell = true;
 			}
