@@ -160,7 +160,7 @@ public class BuildingOcupancyScript : MonoBehaviour
             tempGO = Instantiate(piecePrefab[3]);
             tempPC = tempGO.GetComponent<PieceControllerScript>();
 
-            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 2);
+            offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 3);
             tempPC.initPiece(this.gameObject, PieceControllerScript.PieceType.L, offsetFromLeft);
 
             height = checkDropHeight(offsetFromLeft, tempPC.getPieceOccupancy());

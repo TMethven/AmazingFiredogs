@@ -83,8 +83,8 @@ public class PieceControllerScript : MonoBehaviour
 
     private bool[,] LPiece = new bool[,]
     {
-        { true, true, true },
-        { false, false, true }
+        { true, true, true, true },
+        { false, false, false, true }
         
     };
 }
