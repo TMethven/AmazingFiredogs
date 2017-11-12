@@ -13,7 +13,7 @@ public class FireControllerScript : MonoBehaviour
     private bool gameActive = true;
     private int fireLevels = 5;
 
-    private bool firstFireSet = false;
+    private float timeSinceLastFire = 0;
 
     private int GridHeight, GridWidth;
 
@@ -52,7 +52,8 @@ public class FireControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-		if(!firstFireSet)
+        timeSinceLastFire += Time.deltaTime;
+		if(timeSinceLastFire > fireDelay)
         {
             int x = Random.Range(0, GridWidth);
             int y = Random.Range(0, GridHeight);
@@ -60,7 +61,7 @@ public class FireControllerScript : MonoBehaviour
             if(buildingScript.OcupancyGrid[y, x])
             {
                 FireArray[y, x] = 1;
-                firstFireSet = true;
+                timeSinceLastFire = 0;
             }
         }
 	}
