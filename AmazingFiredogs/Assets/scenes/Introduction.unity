@@ -136,7 +136,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 5099072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.799988, y: 37.699997, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935198860}
@@ -144,8 +144,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.8, y: 37.7}
-  m_SizeDelta: {x: 920.4, y: 580.7}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1000, y: 580.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5099074
 MonoBehaviour:
@@ -174,21 +174,19 @@ MonoBehaviour:
     and fires will start to rage!
 
 
-    You can put out fires by holding the hose and standing in the room on fire.
+    You can put out fires by holding the hose and standing in any room that is on
+    fire, but the fire will constantly spread.
 
 
-    If you reach any door, you can press UP or DOWN and you will move to the nearest
-    door above or below you in that column. You might have to wait for some more building
-    to appear before they work, however!
+    If you stand in front of a door, you can press UP or DOWN and you will move to
+    the nearest door above or below you in that column. You might have to wait for
+    some more building to appear before they work, however!
 
 
     First dog to rescue 5 humans will be a good boy, and win the game!
 
 
-    P.S. Humans who are already cooked, don''t count!
-
-
-'
+    P.S. Humans who are already cooked, don''t count towards your score!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf8508ecf17ca0e4e975c112ec2e316c, type: 2}
   m_sharedMaterial: {fileID: 21802636190312390, guid: cf8508ecf17ca0e4e975c112ec2e316c,
@@ -223,7 +221,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 513
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -234,7 +232,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 534
+  m_firstOverflowCharacterIndex: 605
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -256,12 +254,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5099074}
-    characterCount: 668
+    characterCount: 740
     spriteCount: 0
-    spaceCount: 135
-    wordCount: 130
+    spaceCount: 147
+    wordCount: 144
     linkCount: 0
-    lineCount: 19
+    lineCount: 16
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -354,7 +352,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 151120492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 340, y: -292, z: 0}
+  m_LocalPosition: {x: 340, y: -418, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1147965933}
@@ -363,7 +361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 340, y: -292}
+  m_AnchoredPosition: {x: 340, y: -418}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151120494
@@ -494,7 +492,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Next
+  m_text: 'Press Fire to
+
+    goto Dog Select!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf8508ecf17ca0e4e975c112ec2e316c, type: 2}
   m_sharedMaterial: {fileID: 21802636190312390, guid: cf8508ecf17ca0e4e975c112ec2e316c,
@@ -562,12 +562,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1147965934}
-    characterCount: 4
+    characterCount: 30
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 5
+    wordCount: 6
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
