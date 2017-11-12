@@ -28,24 +28,20 @@ public class PlayerMove : MonoBehaviour {
 
 	Stairwell stairwell = null;
 
-	public void SetStairwell(Stairwell stairwell) {
-		this.stairwell = stairwell;
-	}
+	GrabThrow grab;
 
-	public void ExitStairwell(Stairwell stairwell) {
-		if (stairwell == this.stairwell) {
-			this.stairwell = null;
-		}
-	}
+	LayerMask groundedMask;
 
 	void Start() {
 		body = GetComponent<Rigidbody2D>();
 		sprite = GetComponent<SpriteRenderer>();
+		grab = GetComponent<GrabThrow>();
+		groundedMask = LayerMask.GetMask(new string[] {"Default"});
 
 		if (PlayerNum == 1) {
 			controllerNum = GlobalInput.Player1Controller;
 			if (controllerNum == -1) {
-				controllerNum = 0; // Default controller number for debugging.
+				controllerNum = 1; // Default controller number for debugging.
 			}
 		} else {
 			controllerNum = GlobalInput.Player2Controller;
@@ -81,6 +77,7 @@ public class PlayerMove : MonoBehaviour {
 		CheckMovement(horiz);
 		CheckJump();
 		CheckVertical(vert);
+		CheckGrab();
 
 		if (Mathf.Abs(body.velocity.x) > Speed) {
 			body.velocity = new Vector2(Speed * Mathf.Sign(body.velocity.x), body.velocity.y);
@@ -94,7 +91,7 @@ public class PlayerMove : MonoBehaviour {
 		} else {
 			Grounded = false;
 			foreach(Transform raycastPoint in RaycastPoints) {
-				if (Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f)) {
+				if (Physics2D.Raycast(raycastPoint.position, Vector2.down, 0.02f, groundedMask)) {
 					Grounded = true;
 				}
 			}
@@ -109,9 +106,11 @@ public class PlayerMove : MonoBehaviour {
 
 	void CheckMovement(float horiz) {
 		if (horiz > 0) {
+			Facing = 1;
 			sprite.flipX = true;
 		}
 		if (horiz < 0) {
+			Facing = -1;
 			sprite.flipX = false;
 		}
 
@@ -136,6 +135,12 @@ public class PlayerMove : MonoBehaviour {
 		}
 	}
 
+	void CheckGrab() {
+		if (Input.GetButtonDown(GlobalInput.Shield[controllerNum])) {
+			grab.CheckGrab();
+		}
+	}
+
 	void CheckVertical(float vert) {
 		if (stairwell) {
 			if (vert > 0 && stairwell.stairwellAbove) {
@@ -144,6 +149,18 @@ public class PlayerMove : MonoBehaviour {
 			if (vert < 0 && stairwell.stairwellBelow) {
 				body.position = stairwell.stairwellBelow.position;
 			}
+		}
+	}
+
+
+	// Stairwell stuff.
+	public void SetStairwell(Stairwell stairwell) {
+		this.stairwell = stairwell;
+	}
+
+	public void ExitStairwell(Stairwell stairwell) {
+		if (stairwell == this.stairwell) {
+			this.stairwell = null;
 		}
 	}
 }
