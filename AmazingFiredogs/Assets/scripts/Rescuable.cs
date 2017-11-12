@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rescuable : MonoBehaviour {
+	public int BuildingNum;
 
 	void Start() {
 		
@@ -12,6 +13,7 @@ public class Rescuable : MonoBehaviour {
 		RescueZone rescue = other.GetComponent<RescueZone>();
 		if (rescue) {
 			Destroy(gameObject);
+			rescue.Rescue(BuildingNum);
 		}
 	}
 }
