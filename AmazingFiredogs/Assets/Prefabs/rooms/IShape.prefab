@@ -164,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787755547509642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.137489, y: -15.164909, z: 0}
+  m_LocalPosition: {x: 0.79128695, y: -5.3528223, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4578007761372448}
@@ -443,6 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuildingNum: 2
+  cookedPrefab: {fileID: 1867443920705580, guid: d06eca74079dad4429b5e7912ae6d7bb,
+    type: 2}
 --- !u!114 &114590542443887776
 MonoBehaviour:
   m_ObjectHideFlags: 1
