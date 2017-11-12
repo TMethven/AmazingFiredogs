@@ -123,4 +123,17 @@ public class FireControllerScript : MonoBehaviour
             FireArray[y, x + 1] = 1;
         }
     }
+
+    public void reduceFire(Vector2Int? buildingPosition)
+    {
+        if (buildingPosition == null)
+        {
+            return;
+        }
+
+        if (FireArray[buildingPosition.Value.y, buildingPosition.Value.x] > 0)
+        {
+            --FireArray[buildingPosition.Value.y, buildingPosition.Value.x];
+        }
+    }
 }
