@@ -12,7 +12,7 @@ public class RescueZone : MonoBehaviour {
 	TextMeshPro p1ScoreText;
 	TextMeshPro p2ScoreText;
 
-	private int winScore = 1;    
+	private int winScore = 5;    
     private GameObject winText;
     private GameObject P1GO, P2GO;
 	float timeToRestart = 5;
@@ -30,6 +30,8 @@ public class RescueZone : MonoBehaviour {
 	
 	void Update() {
 		if (winner) {
+			P1GO.GetComponent<PlayerMove>().Speed = 0;
+			P2GO.GetComponent<PlayerMove>().Speed = 0;
 			winText.transform.position = new Vector3(winner.transform.position.x, winner.transform.position.y + 5f, -2f);
 			winText.SetActive(true);
 

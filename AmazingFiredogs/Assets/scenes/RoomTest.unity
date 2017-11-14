@@ -483,17 +483,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 33417564653907212, guid: b8d3e747ecbacf44f895699c079f46cf,
+    - target: {fileID: 33951136606654612, guid: b8d3e747ecbacf44f895699c079f46cf,
         type: 2}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 114800615282718624, guid: b8d3e747ecbacf44f895699c079f46cf,
+    - target: {fileID: 114274824351313772, guid: b8d3e747ecbacf44f895699c079f46cf,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114800615282718624, guid: b8d3e747ecbacf44f895699c079f46cf,
+    - target: {fileID: 114274824351313772, guid: b8d3e747ecbacf44f895699c079f46cf,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774465051461822, guid: b8d3e747ecbacf44f895699c079f46cf,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774465051461822, guid: b8d3e747ecbacf44f895699c079f46cf,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -503,27 +513,17 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 114774465051461822, guid: b8d3e747ecbacf44f895699c079f46cf,
+    - target: {fileID: 114800615282718624, guid: b8d3e747ecbacf44f895699c079f46cf,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114774465051461822, guid: b8d3e747ecbacf44f895699c079f46cf,
+    - target: {fileID: 114800615282718624, guid: b8d3e747ecbacf44f895699c079f46cf,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114274824351313772, guid: b8d3e747ecbacf44f895699c079f46cf,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114274824351313772, guid: b8d3e747ecbacf44f895699c079f46cf,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 33951136606654612, guid: b8d3e747ecbacf44f895699c079f46cf,
+    - target: {fileID: 33417564653907212, guid: b8d3e747ecbacf44f895699c079f46cf,
         type: 2}
       propertyPath: m_Mesh
       value: 
@@ -1113,18 +1113,6 @@ Prefab:
     - {fileID: 81026513761196362, guid: bd25286526396fd47b7833e99c930de5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bd25286526396fd47b7833e99c930de5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2003471855 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1635731737531322, guid: b8d3e747ecbacf44f895699c079f46cf,
-    type: 2}
-  m_PrefabInternal: {fileID: 1267488006}
---- !u!81 &2003471856
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2003471855}
-  m_Enabled: 1
 --- !u!1 &2027444426
 GameObject:
   m_ObjectHideFlags: 0

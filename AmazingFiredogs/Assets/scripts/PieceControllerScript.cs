@@ -14,22 +14,30 @@ public class PieceControllerScript : MonoBehaviour
 
     public static float unitSize = 5.15f;
 
-	// Use this for initialization
-	void Start ()
+	Vector3 startPos;
+	Vector3 target;
+	bool targetSet = false;
+
+	float dropTime = 1.0f;
+	float dropTimer;
+
+	void Start()
     {
-		
+		dropTimer = 0;
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	void Update()
     {
-		
+		if (targetSet && dropTimer <= dropTime) {
+			dropTimer += Time.deltaTime;
+			float lerpAmount = Mathf.Min(dropTimer / dropTime, 1);
+			transform.localPosition = Vector3.Lerp(startPos, target, lerpAmount);
+		}
 	}
 
     public void initPiece(GameObject parent, PieceType piece, int offsetFromLeft)
     {
         this.transform.SetParent(parent.transform);
-
         this.offsetFromLeft = offsetFromLeft;
     }
 
@@ -37,8 +45,10 @@ public class PieceControllerScript : MonoBehaviour
     {
         offsetFromBottom = height;
 
-        this.transform.localPosition = new Vector3(offsetFromLeft * unitSize, offsetFromBottom * unitSize);
-
+		targetSet = true;
+        target = new Vector3(offsetFromLeft * unitSize, offsetFromBottom * unitSize);
+		startPos = new Vector3(target.x, target.y + 30);
+		transform.localPosition = startPos;
         findLowerStairWell();
     }
 

@@ -176,7 +176,7 @@ public class BuildingOcupancyScript : MonoBehaviour
         }
         else
         {
-            tempGO = Instantiate(piecePrefab[5]);
+			tempGO = Instantiate(piecePrefab[5], new Vector3(10000, 100000), Quaternion.identity);
             tempPC = tempGO.GetComponent<PieceControllerScript>();
 
             offsetFromLeft = getBestOffsetFromLeft(tempPC, GridWidth - 1);
