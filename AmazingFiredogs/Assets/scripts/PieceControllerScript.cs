@@ -62,8 +62,6 @@ public class PieceControllerScript : MonoBehaviour
             targetSW.stairwellAbove = sourceSW.transform;
             sourceSW.stairwellBelow = targetSW.transform;
         }
-
-        Debug.Log("Test!");
     }
 
     public bool[,] getPieceOccupancy()

@@ -17,8 +17,6 @@ public class BuildingOcupancyScript : MonoBehaviour
 
     private float timeSinceLastBlock = 0f;
 
-    private int pieceCount = 0;
-
     // Use this for initialization
     void Start ()
     {

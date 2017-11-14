@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class RescueZone : MonoBehaviour {
@@ -11,9 +12,11 @@ public class RescueZone : MonoBehaviour {
 	TextMeshPro p1ScoreText;
 	TextMeshPro p2ScoreText;
 
-    private int winScore = 5;    
+	private int winScore = 1;    
     private GameObject winText;
     private GameObject P1GO, P2GO;
+	float timeToRestart = 5;
+	GameObject winner = null;
 
 	void Start() {
 		p1ScoreText = transform.Find("P1Score").GetComponent<TextMeshPro>();
@@ -26,19 +29,30 @@ public class RescueZone : MonoBehaviour {
 	}
 	
 	void Update() {
-		
+		if (winner) {
+			winText.transform.position = new Vector3(winner.transform.position.x, winner.transform.position.y + 5f, -2f);
+			winText.SetActive(true);
+
+			timeToRestart -= Time.deltaTime;
+			if (timeToRestart < 0) {
+				SceneManager.LoadScene(0);
+			}
+		}
 	}
 
 	public void Rescue(int buildingNum) {
+		if (winner) {
+			return;
+		}
+
+
 		if (buildingNum == 1)
         {
 			p1Score += 1;
 			p1ScoreText.text = "" + p1Score;
             if(p1Score >= winScore)
             {
-                winText.transform.position = new Vector3(P1GO.transform.position.x, P1GO.transform.position.y + 5f, -2f);
-                winText.SetActive(true);
-                Time.timeScale = 0f;
+				this.winner = P1GO;
             }
 		}
         else
@@ -48,10 +62,9 @@ public class RescueZone : MonoBehaviour {
 
             if (p2Score >= winScore)
             {
-                winText.transform.position = new Vector3(P2GO.transform.position.x, P2GO.transform.position.y + 5f, -2f);
-                winText.SetActive(true);
-                Time.timeScale = 0f;
+				this.winner = P2GO;
             }
         }
 	}
+
 }
