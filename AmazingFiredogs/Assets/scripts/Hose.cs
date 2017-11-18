@@ -24,10 +24,10 @@ public class Hose : MonoBehaviour {
 		waterSound = GetComponent<AudioSource>();
     }
 	
-	void Update() {
+	void FixedUpdate() {
         if(grabbed.IsGrabbed)
         {
-			if (Random.value < 0.1f) {
+			if (Random.value < 0.2f) {
 				Vector2Int? buildingGridPos = buildingOcupancyScript1.worldToBuildingCoord(transform.position);
 				fireControllerScript1.reduceFire(buildingGridPos);
 				buildingGridPos = buildingOcupancyScript2.worldToBuildingCoord(transform.position);
