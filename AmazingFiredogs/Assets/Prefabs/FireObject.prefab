@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4491846002660342}
   - component: {fileID: 212112668561891778}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FireSprite1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1703552264851352
 GameObject:
@@ -36,12 +36,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4483879635028086}
   - component: {fileID: 212884227498939146}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FireSprite2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1862826915004976
 GameObject:
@@ -52,12 +52,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4441648619021478}
   - component: {fileID: 114259377066594352}
-  m_Layer: 0
+  - component: {fileID: 61233791616521376}
+  m_Layer: 13
   m_Name: FireObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4441648619021478
 Transform:
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862826915004976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -16.935894, y: -9.893801, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4491846002660342}
@@ -100,6 +101,31 @@ Transform:
   m_Father: {fileID: 4441648619021478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61233791616521376
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862826915004976}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.6308832, y: 1.631938}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.628771, y: 3.3935108}
+  m_EdgeRadius: 0
 --- !u!114 &114259377066594352
 MonoBehaviour:
   m_ObjectHideFlags: 1

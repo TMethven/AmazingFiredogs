@@ -9,14 +9,12 @@ public class FireSpriteController : MonoBehaviour
     private int spriteOn = 0;
     private float timeSinceLastFlicker = 0;
 
-	// Use this for initialization
-	void Start ()
+	void Start()
     {
 		
 	}
 	
-	// Update is called once per frame
-	void Update ()
+	void Update()
     {
         timeSinceLastFlicker += Time.deltaTime;
 

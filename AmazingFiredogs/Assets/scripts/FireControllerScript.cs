@@ -143,15 +143,14 @@ public class FireControllerScript : MonoBehaviour
     {
         if (buildingPosition == null)
         {
-            return;
+			return;
         }
 
         if (FireArray[buildingPosition.Value.y, buildingPosition.Value.x] > 0)
         {
             --FireArray[buildingPosition.Value.y, buildingPosition.Value.x];
+			UpdateSprite(buildingPosition.Value.x, buildingPosition.Value.y);
         }
-
-		UpdateSprite(buildingPosition.Value.x, buildingPosition.Value.y);
     }
 
     public int checkFireLevel(Vector3 in_worldPosition)
