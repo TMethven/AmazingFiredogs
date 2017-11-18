@@ -61,7 +61,7 @@ public class PieceControllerScript : MonoBehaviour
         GameObject thisStairWell = sprite.Find("Stairwell").gameObject;
         Stairwell sourceSW = thisStairWell.GetComponent<Stairwell>();
 
-        RaycastHit2D hit = Physics2D.Raycast(thisStairWell.transform.position - new Vector3(0, 2.5f, 0), Vector2.down, 50f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(thisStairWell.transform.position - new Vector3(0, 2.5f, 0), Vector2.down, 500f, layerMask);
         Debug.DrawRay(thisStairWell.transform.position - new Vector3(0, 2.5f, 0), Vector2.down, Color.magenta, 10f);
 
         if(hit.collider != null)
