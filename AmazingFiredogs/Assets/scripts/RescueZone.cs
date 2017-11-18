@@ -24,7 +24,7 @@ public class RescueZone : MonoBehaviour {
 	void Start() {
 		p1ScoreText = transform.Find("P1Score").GetComponent<TextMeshPro>();
 		p2ScoreText = transform.Find("P2Score").GetComponent<TextMeshPro>();
-        winText = GameObject.Find("Wintext");
+		winText = transform.Find("Wintext").gameObject;
         winText.SetActive(false);
 
         P1GO = GameObject.Find("Player1");
