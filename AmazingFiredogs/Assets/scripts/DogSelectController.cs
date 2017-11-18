@@ -16,11 +16,13 @@ public class DogSelectController : MonoBehaviour
     private float countdown = -1;
     private float countdownTime = 3;
 
-	public string NextScene;
+	string nextScene;
 
 	// Use this for initialization
 	void Start ()
     {
+		nextScene = GlobalInput.GameMode;
+
         CorgiQuad = GameObject.Find("CorgiQuad");
         HuskyQuad = GameObject.Find("HuskyQuad");
 
@@ -197,7 +199,7 @@ public class DogSelectController : MonoBehaviour
             if(countdown <= 0)
             {
                 countdown = 0;
-				SceneManager.LoadScene(NextScene);
+				SceneManager.LoadScene(nextScene);
             }
         }
     }

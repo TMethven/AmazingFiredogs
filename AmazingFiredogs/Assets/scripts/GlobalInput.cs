@@ -14,10 +14,12 @@ public class GlobalInput
     public static int Player1Controller = -1;
     public static int Player2Controller = -1;
 
-    public static DogType Player1DogType = DogType.Corgi;
-    public static DogType Player2DogType = DogType.Husky;
+	public static DogType Player1DogType = DogType.None;
+    public static DogType Player2DogType = DogType.None;
 
     public enum DogType { None, Corgi, Husky, GermanShep, Lab };
 
-	public static Color[] DogColours = new Color[]{new Color(0, 0, 0), new Color(0xF3 / 255.0f, 0xA8 / 255.0f, 0x5D / 255.0f), new Color(0x8E / 255.0f, 0x92 / 255.0f, 0x9B / 255.0f), new Color(0, 0, 0), new Color(0, 0, 0)};
+	public static Color[] DogColours = new Color[]{new Color(1, 1, 1), new Color(0xF3 / 255.0f, 0xA8 / 255.0f, 0x5D / 255.0f), new Color(0x8E / 255.0f, 0x92 / 255.0f, 0x9B / 255.0f), new Color(1, 1, 1), new Color(1, 1, 1)};
+
+	public static string GameMode = "TwoBuildings";
 }

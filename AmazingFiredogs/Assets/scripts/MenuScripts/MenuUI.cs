@@ -7,37 +7,46 @@ using UnityEngine.EventSystems;
 
 public class MenuUI : MonoBehaviour {
 
-	public Button start_btn;
-	public Button exit_btn;
-	public Button instr_btn; 
+	public Button StartSingle;
+	public Button StartDouble;
+	public Button Exit;
+	public Button Instructions; 
 
 	void Start () 
 	{
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-		Button btnStart = start_btn.GetComponent<Button> ();
-		Button btnExit = exit_btn.GetComponent<Button> ();
-		Button btnInstr = instr_btn.GetComponent<Button> ();
 
-		btnStart.onClick.AddListener (StartTaskOnClick);
-		btnExit.onClick.AddListener (ExitTaskOnClick);
-		btnInstr.onClick.AddListener (InstrTaskOnClick);
+		StartSingle.onClick.AddListener(StartSingleOnClick);
+		StartDouble.onClick.AddListener(StartDoubleOnClick);
+		Exit.onClick.AddListener(ExitTaskOnClick);
+		Instructions.onClick.AddListener(InstrTaskOnClick);
+
+		EventSystem.current.SetSelectedGameObject(StartSingle.gameObject);
 	}
 
     void Update()
     {
         if(Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
-            EventSystem.current.SetSelectedGameObject(start_btn.gameObject);
+			EventSystem.current.SetSelectedGameObject(StartSingle.gameObject);
 
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			Application.Quit();
 		}
     }
 
-	void StartTaskOnClick()
+	void StartSingleOnClick()
 	{
-		SceneManager.LoadScene ("Introduction");
+		GlobalInput.GameMode = "OneBuilding";
+		SceneManager.LoadScene("Introduction");
 	}
+
+	void StartDoubleOnClick()
+	{
+		GlobalInput.GameMode = "TwoBuildings";
+		SceneManager.LoadScene("Introduction");
+	}
+
 	void ExitTaskOnClick()
 	{
 		Application.Quit ();
