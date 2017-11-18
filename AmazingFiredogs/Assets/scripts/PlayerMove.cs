@@ -142,7 +142,6 @@ public class PlayerMove : MonoBehaviour {
 
 	void CheckGrab() {
 		if (Input.GetButtonDown(GlobalInput.Shield[controllerNum])) {
-			Debug.Log("Grabby???");
 			if (grab.CheckGrab()) {
 				audioSource.PlayOneShot(borks[(int) (Random.value * borks.Length)]);
 			}

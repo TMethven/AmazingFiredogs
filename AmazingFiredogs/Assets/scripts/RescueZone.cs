@@ -29,6 +29,10 @@ public class RescueZone : MonoBehaviour {
 	}
 	
 	void Update() {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			SceneManager.LoadScene(0);
+		}
+
 		if (winner) {
 			P1GO.GetComponent<PlayerMove>().Speed = 0;
 			P2GO.GetComponent<PlayerMove>().Speed = 0;

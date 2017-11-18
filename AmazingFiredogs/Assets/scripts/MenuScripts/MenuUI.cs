@@ -28,6 +28,10 @@ public class MenuUI : MonoBehaviour {
     {
         if(Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
             EventSystem.current.SetSelectedGameObject(start_btn.gameObject);
+
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit();
+		}
     }
 
 	void StartTaskOnClick()
