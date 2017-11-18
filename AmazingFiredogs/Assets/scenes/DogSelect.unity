@@ -1144,6 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed9bd8ec31ed08548b3535eaa984335d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextScene: TwoBuildings
 --- !u!4 &1670853317
 Transform:
   m_ObjectHideFlags: 0

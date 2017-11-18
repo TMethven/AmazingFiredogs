@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Rescuable : MonoBehaviour {
 	public int BuildingNum;
-	FireControllerScript building1;
+	GameObject[] buildings;
+	List<FireControllerScript> fires;
 	FireControllerScript building2;
 	public GameObject cookedPrefab;
 
@@ -17,12 +18,20 @@ public class Rescuable : MonoBehaviour {
 			BuildingNum = 1;
 		}
 
-		building1 = GameObject.Find("P1Building").GetComponent<FireControllerScript>();
-		building2 = GameObject.Find("P2Building").GetComponent<FireControllerScript>();
+		buildings = GameObject.FindGameObjectsWithTag("Building");
+		fires = new List<FireControllerScript>();
+		foreach (GameObject building in buildings) {
+			fires.Add(building.GetComponent<FireControllerScript>());
+		}
+
 	}
 
 	void Update() {
-		int fireLevel = building1.checkFireLevel(transform.position) + building2.checkFireLevel(transform.position);
+		int fireLevel = 0;
+		foreach (FireControllerScript fire in fires) {
+			fireLevel += fire.checkFireLevel(transform.position);
+		}
+
 		burned += fireLevel;
 		if (burned > 1000) {
 			GameObject.Instantiate(cookedPrefab, transform.position, transform.rotation);

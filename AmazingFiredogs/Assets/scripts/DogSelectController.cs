@@ -16,6 +16,8 @@ public class DogSelectController : MonoBehaviour
     private float countdown = -1;
     private float countdownTime = 3;
 
+	public string NextScene;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -195,8 +197,7 @@ public class DogSelectController : MonoBehaviour
             if(countdown <= 0)
             {
                 countdown = 0;
-                Debug.Log("LOAD NEXT SCENE!");
-                SceneManager.LoadScene("RoomTest");
+				SceneManager.LoadScene(NextScene);
             }
         }
     }

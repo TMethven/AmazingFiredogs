@@ -6,21 +6,21 @@ public class PutOutFire : MonoBehaviour {
 	ParticleSystem system;
 	List<ParticleCollisionEvent> collisions;
 
-	public GameObject building1;
-	public GameObject building2;
-	private BuildingOcupancyScript buildingOcupancyScript1;
-	private BuildingOcupancyScript buildingOcupancyScript2;
-	private FireControllerScript  fireControllerScript1;
-	private FireControllerScript fireControllerScript2;
+	private GameObject[] buildings;
+	private List<BuildingOcupancyScript> buildingOccupancies;
+	private List<FireControllerScript> fireControllers;
 
 	void Start() {
 		system = GetComponent<ParticleSystem>();
 		collisions = new List<ParticleCollisionEvent>();
 
-		buildingOcupancyScript1 = building1.GetComponent<BuildingOcupancyScript>();
-		buildingOcupancyScript2 = building2.GetComponent<BuildingOcupancyScript>();
-		fireControllerScript1 = building1.GetComponent<FireControllerScript>();
-		fireControllerScript2 = building2.GetComponent<FireControllerScript>();
+		buildings = GameObject.FindGameObjectsWithTag("Building");
+		buildingOccupancies = new List<BuildingOcupancyScript>();
+		fireControllers = new List<FireControllerScript>();
+		foreach (GameObject building in buildings) {
+			buildingOccupancies.Add(building.GetComponent<BuildingOcupancyScript>());
+			fireControllers.Add(building.GetComponent<FireControllerScript>());
+		}
 	}
 
 	void FixedUpdate() {
@@ -33,7 +33,6 @@ public class PutOutFire : MonoBehaviour {
 		foreach (ParticleCollisionEvent collision in collisions) {
 			Vector3 pos;
 			if (other.GetComponent<FireSpriteController>()) {
-				Debug.Log("Hit fire?");
 				pos = other.transform.position + Vector3.right + Vector3.up; // Because the fire origin is at the bottom left.
 			} else {
 				pos = collision.intersection;
@@ -44,9 +43,12 @@ public class PutOutFire : MonoBehaviour {
 	}
 
 	void PutOut(Vector3 pos) {
-		Vector2Int? buildingGridPos = buildingOcupancyScript1.worldToBuildingCoord(pos);
-		fireControllerScript1.reduceFire(buildingGridPos);
-		buildingGridPos = buildingOcupancyScript2.worldToBuildingCoord(pos);
-		fireControllerScript2.reduceFire(buildingGridPos);
+		for(int i = 0; i < buildingOccupancies.Count; i++) {
+			BuildingOcupancyScript occupancy = buildingOccupancies[i];
+			FireControllerScript fire = fireControllers[i];
+			Vector2Int? buildingPos = occupancy.worldToBuildingCoord(pos);
+			fire.reduceFire(buildingPos);
+
+		}
 	}
 }

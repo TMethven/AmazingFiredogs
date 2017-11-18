@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class IntroductionButton : MonoBehaviour {
-
 	public Button Next; 
 	void Start () 
 	{
