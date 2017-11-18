@@ -18,6 +18,9 @@ public class RescueZone : MonoBehaviour {
 	float timeToRestart = 5;
 	GameObject winner = null;
 
+	public bool P1CanRescue = true;
+	public bool P2CanRescue = true;
+
 	void Start() {
 		p1ScoreText = transform.Find("P1Score").GetComponent<TextMeshPro>();
 		p2ScoreText = transform.Find("P2Score").GetComponent<TextMeshPro>();
@@ -46,13 +49,13 @@ public class RescueZone : MonoBehaviour {
 		}
 	}
 
-	public void Rescue(int buildingNum) {
+	public bool Rescue(int buildingNum) {
 		if (winner) {
-			return;
+			return false;
 		}
 
 
-		if (buildingNum == 1)
+		if (buildingNum == 1 && P1CanRescue)
         {
 			p1Score += 1;
 			p1ScoreText.text = "" + p1Score;
@@ -60,8 +63,9 @@ public class RescueZone : MonoBehaviour {
             {
 				this.winner = P1GO;
             }
+			return true;
 		}
-        else
+		else if (P2CanRescue)
         {
 			p2Score += 1;
 			p2ScoreText.text = "" + p2Score;
@@ -70,7 +74,9 @@ public class RescueZone : MonoBehaviour {
             {
 				this.winner = P2GO;
             }
+			return true;
         }
+		return false;
 	}
 
 }

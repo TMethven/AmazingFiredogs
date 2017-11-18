@@ -1,4 +1,6 @@
-﻿public class GlobalInput
+﻿using UnityEngine;
+
+public class GlobalInput
 {
     public static string[] Vertical = { "Keyboard0Vertical", "Keyboard1Vertical", "Joy0Vertical", "Joy1Vertical", "Joy2Vertical", "Joy3Vertical" };
     public static string[] Horizontal = { "Keyboard0Horizontal", "Keyboard1Horizontal", "Joy0Horizontal", "Joy1Horizontal", "Joy2Horizontal", "Joy3Horizontal" };
@@ -12,8 +14,10 @@
     public static int Player1Controller = -1;
     public static int Player2Controller = -1;
 
-    public static DogType Player1DogType = DogType.None;
-    public static DogType Player2DogType = DogType.None ;
+    public static DogType Player1DogType = DogType.Corgi;
+    public static DogType Player2DogType = DogType.Husky;
 
     public enum DogType { None, Corgi, Husky, GermanShep, Lab };
+
+	public static Color[] DogColours = new Color[]{new Color(0, 0, 0), new Color(0xF3 / 255.0f, 0xA8 / 255.0f, 0x5D / 255.0f), new Color(0x8E / 255.0f, 0x92 / 255.0f, 0x9B / 255.0f), new Color(0, 0, 0), new Color(0, 0, 0)};
 }

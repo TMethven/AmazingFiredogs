@@ -115,6 +115,8 @@ MonoBehaviour:
   BuildingNum: 2
   cookedPrefab: {fileID: 1867443920705580, guid: d06eca74079dad4429b5e7912ae6d7bb,
     type: 2}
+  p1Tint: {r: 0.952, g: 0.66, b: 0.36400002, a: 1}
+  p2Tint: {r: 0.5562981, g: 0.5738654, b: 0.609, a: 1}
 --- !u!212 &212377849002811048
 SpriteRenderer:
   m_ObjectHideFlags: 1

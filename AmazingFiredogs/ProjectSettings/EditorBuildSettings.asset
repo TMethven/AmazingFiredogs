@@ -18,5 +18,8 @@ EditorBuildSettings:
     path: Assets/scenes/DogSelect.unity
     guid: d6c57e6b773b3bb46889798a8462e9ea
   - enabled: 1
-    path: Assets/scenes/RoomTest.unity
-    guid: 2a92b2f7184bc3745a7e7e140020d697
+    path: Assets/scenes/OneBuilding.unity
+    guid: f4c99e8cdeda60c43a7b082fb3da65d6
+  - enabled: 1
+    path: Assets/scenes/TwoBuildings.unity
+    guid: 64a0294611216bc408ebb2ff9291fbf3

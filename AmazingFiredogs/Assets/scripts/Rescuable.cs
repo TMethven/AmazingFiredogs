@@ -6,19 +6,32 @@ public class Rescuable : MonoBehaviour {
 	public int BuildingNum;
 	GameObject[] buildings;
 	List<FireControllerScript> fires;
-	FireControllerScript building2;
 	public GameObject cookedPrefab;
 
 	int burned = 0;
 
 	void Start() {
-		if (transform.position.x > 0) {
-			BuildingNum = 2;
+		buildings = GameObject.FindGameObjectsWithTag("Building");
+
+		if (buildings.Length == 2) {
+			if (transform.position.x > 0) {
+				BuildingNum = 2;
+			} else {
+				BuildingNum = 1;
+			}
 		} else {
-			BuildingNum = 1;
+			Color tint;
+			if (Random.value < 0.5) {
+				BuildingNum = 1;
+				tint = GlobalInput.DogColours[(int)GlobalInput.Player1DogType];
+			} else {
+				BuildingNum = 2;
+				tint = GlobalInput.DogColours[(int)GlobalInput.Player2DogType];
+			}
+			Debug.Log(tint);
+			GetComponent<SpriteRenderer>().color = tint;
 		}
 
-		buildings = GameObject.FindGameObjectsWithTag("Building");
 		fires = new List<FireControllerScript>();
 		foreach (GameObject building in buildings) {
 			fires.Add(building.GetComponent<FireControllerScript>());
@@ -43,8 +56,9 @@ public class Rescuable : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		RescueZone rescue = other.GetComponent<RescueZone>();
 		if (rescue) {
-			Destroy(gameObject);
-			rescue.Rescue(BuildingNum);
+			if (rescue.Rescue(BuildingNum)) {
+				Destroy(gameObject);
+			}
 		}
 	}
 }
