@@ -27,10 +27,12 @@ public class Hose : MonoBehaviour {
 	void Update() {
         if(grabbed.IsGrabbed)
         {
-            Vector2Int? buildingGridPos = buildingOcupancyScript1.worldToBuildingCoord(transform.position);
-            fireControllerScript1.reduceFire(buildingGridPos);
-            buildingGridPos = buildingOcupancyScript2.worldToBuildingCoord(transform.position);
-            fireControllerScript2.reduceFire(buildingGridPos);
+			if (Random.value < 0.1f) {
+				Vector2Int? buildingGridPos = buildingOcupancyScript1.worldToBuildingCoord(transform.position);
+				fireControllerScript1.reduceFire(buildingGridPos);
+				buildingGridPos = buildingOcupancyScript2.worldToBuildingCoord(transform.position);
+				fireControllerScript2.reduceFire(buildingGridPos);
+			}
         }
 
 		if (grabbed.IsGrabbed && !particles.isEmitting) {

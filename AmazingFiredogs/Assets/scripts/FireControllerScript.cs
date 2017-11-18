@@ -11,7 +11,7 @@ public class FireControllerScript : MonoBehaviour
     private BuildingOcupancyScript buildingScript;
     private GameObject[,] fireSprites;
     private bool gameActive = true;
-    private int fireLevels = 5;
+    private int fireLevels = 10;
 
     private float timeSinceLastFire = 0;
 
@@ -81,7 +81,7 @@ public class FireControllerScript : MonoBehaviour
                 {
                     if (FireArray[y, x] > 0 && FireArray[y, x] < fireLevels)
                     {
-                        Debug.Log("y x FireValue:" + y + " " + x + " " + FireArray[y, x]);
+                        // Debug.Log("y x FireValue:" + y + " " + x + " " + FireArray[y, x]);
                         if (Random.Range(0f, 1f) > 0.2f)
                             FireArray[y, x]++;
                     }
@@ -90,14 +90,8 @@ public class FireControllerScript : MonoBehaviour
                         checkSpreadToNeighbours(y, x);
                     }
 
-                    if (FireArray[y, x] == 0)
-                        fireSprites[y, x].SetActive(false);
-                    else
-                    {
-                        fireSprites[y, x].SetActive(true);
-                        fireSprites[y, x].GetComponent<FireSpriteController>().setTransparency(0.2f * FireArray[y, x]);
-                        //fireSprites[y, x].transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f * FireArray[y, x]);
-                    }
+					UpdateSprite(x, y);
+
 					totalFire += FireArray[y, x];
                 }
             }
@@ -108,6 +102,16 @@ public class FireControllerScript : MonoBehaviour
             yield return new WaitForSeconds(Speed);
         }
     }
+
+	private void UpdateSprite(int x, int y) {
+		if (FireArray[y, x] == 0)
+			fireSprites[y, x].SetActive(false);
+		else
+		{
+			fireSprites[y, x].SetActive(true);
+			fireSprites[y, x].GetComponent<FireSpriteController>().setTransparency(FireArray[y, x] / (float) fireLevels);
+		}
+	}
 
     private void checkSpreadToNeighbours(int y, int x)
     {
@@ -146,6 +150,8 @@ public class FireControllerScript : MonoBehaviour
         {
             --FireArray[buildingPosition.Value.y, buildingPosition.Value.x];
         }
+
+		UpdateSprite(buildingPosition.Value.x, buildingPosition.Value.y);
     }
 
     public int checkFireLevel(Vector3 in_worldPosition)
