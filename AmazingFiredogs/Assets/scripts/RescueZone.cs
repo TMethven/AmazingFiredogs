@@ -12,7 +12,7 @@ public class RescueZone : MonoBehaviour {
 	TextMeshPro p1ScoreText;
 	TextMeshPro p2ScoreText;
 
-	private int winScore = 5;    
+	private int winScore = 5;
     private GameObject winText;
     private GameObject P1GO, P2GO;
 	float timeToRestart = 5;
@@ -54,7 +54,6 @@ public class RescueZone : MonoBehaviour {
 			return false;
 		}
 
-
 		if (buildingNum == 1 && P1CanRescue)
         {
 			p1Score += 1;
@@ -65,7 +64,7 @@ public class RescueZone : MonoBehaviour {
             }
 			return true;
 		}
-		else if (P2CanRescue)
+		else if (buildingNum == 2 && P2CanRescue)
         {
 			p2Score += 1;
 			p2ScoreText.text = "" + p2Score;

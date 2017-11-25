@@ -28,7 +28,6 @@ public class Rescuable : MonoBehaviour {
 				BuildingNum = 2;
 				tint = GlobalInput.DogColours[(int)GlobalInput.Player2DogType];
 			}
-			Debug.Log(tint);
 			GetComponent<SpriteRenderer>().color = tint;
 		}
 

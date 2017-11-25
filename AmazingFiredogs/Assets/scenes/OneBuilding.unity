@@ -583,6 +583,16 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 81393349563710658, guid: b8d3e747ecbacf44f895699c079f46cf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82828384718124964, guid: b8d3e747ecbacf44f895699c079f46cf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8d3e747ecbacf44f895699c079f46cf, type: 2}
   m_IsPrefabParent: 0
@@ -707,6 +717,15 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288474150405542, guid: b8d3e747ecbacf44f895699c079f46cf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114316553100683764, guid: b8d3e747ecbacf44f895699c079f46cf,
+        type: 2}
+      propertyPath: P1CanRescue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8d3e747ecbacf44f895699c079f46cf, type: 2}
